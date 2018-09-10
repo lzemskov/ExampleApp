@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Notes App</string>
+    <string name="title_activity_main2">All Notes</string>
+    <string name="empty_not_saved">Save Failed</string>
+    <string name="subject">Subject</string>
+    <string name="details">Details</string>
+    <string name="button_save">Save</string>
+</resources>
