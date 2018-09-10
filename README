@@ -1,0 +1,11 @@
+I want to have an app which would benefit me in the following ways:
+
+1. Help me keep track of Notes and things i need to do for various Projects and Tasks.
+
+2. Allow me to associate sets / subsets of Notes, Tasks, Project to Notes, Tasks, Projects.
+
+3. Allow me to have listview like representations for certain user defined groupings:
+3.1 All Notes / All Tasks / All Projects / Tasks, Notes, Projects associated with Specific Project.
+3.2 All Recent (keep last 10/20 with no repetition between results)
+
+4. Allow me to quickly update any Note, Task, Project
