@@ -16,7 +16,7 @@ public class NewNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_note);
+        setContentView(R.layout.new_note_view);
         mEditNoteSubject = findViewById(R.id.edit_subject);
         mEditNoteDescription = findViewById(R.id.edit_description);
 
