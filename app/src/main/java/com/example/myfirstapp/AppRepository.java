@@ -6,6 +6,10 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
+/**
+ * Connects application context with the database.
+ * Kicks off asynchronous insert request using AsyncTask instance.
+ */
 public class AppRepository {
     private NoteDao mNoteDao;
     private LiveData<List<Note>> mAllNotes;

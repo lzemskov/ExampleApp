@@ -8,6 +8,9 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
+/**
+ * This class contains query definitions for requests issued against 'Note' entity.
+ */
 @Dao
 public interface NoteDao {
     @Query("SELECT * FROM note")

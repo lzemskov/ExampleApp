@@ -9,6 +9,10 @@ import android.os.AsyncTask;
 
 import io.reactivex.annotations.NonNull;
 
+/**
+ * This class instantiates Database for the Application.
+ * For test purpose it initalizes DB with 2 Notes to have something for the view.
+ */
 @Database(entities = {Note.class}, version = 1)
 public abstract class AppDatabse extends RoomDatabase {
     public abstract NoteDao noteDao();
@@ -33,7 +37,7 @@ public abstract class AppDatabse extends RoomDatabase {
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
 
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+        public void onOpen(@android.support.annotation.NonNull @NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
             new PopulateDbAsync(INSTANCE).execute();
         }

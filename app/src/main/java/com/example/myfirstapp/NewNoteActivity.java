@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Activity called when we try creating a New Note.
+ */
 public class NewNoteActivity extends AppCompatActivity {
     public static final String SER_KEY = "notemarker";
     private EditText mEditNoteSubject;

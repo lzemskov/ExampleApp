@@ -6,11 +6,16 @@ import android.arch.lifecycle.LiveData;
 
 import java.util.List;
 
-public class NoteViewModel extends AndroidViewModel {
+/**
+ * This class builds view to be consumed by the UI.
+ * Delegates to Repository to Gets all Notes from the DB.
+ * Delegates to Repository to Inserts new Note info the DB.
+ */
+public class AllNotesViewModel extends AndroidViewModel {
     private AppRepository mAppRepository;
     private LiveData<List<Note>> mAllNotes;
 
-    public NoteViewModel (Application application) {
+    public AllNotesViewModel(Application application) {
         super(application);
         mAppRepository = new AppRepository(application);
         mAllNotes = mAppRepository.getAllNotes();

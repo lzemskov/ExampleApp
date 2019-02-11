@@ -15,8 +15,18 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ * This Activity is currently the first screen in the application.
+ * Defined inside the manifest file and loaded when application is launched.
+ *
+ * Sets the view and layout based on '.xml' from layout folder.
+ * Loads a toolbar and adds action support.
+ * Loads the floating button and adds a listener for it.
+ * Loads ReciclerView and populates it with data with help from Adapter.
+ * Provides on activity callback to handle activity on this view.
+ */
 public class LoadAllNotesActivity extends AppCompatActivity {
-    private NoteViewModel mNoteViewModel;
+    private AllNotesViewModel mNoteViewModel;
     public static final int NEW_NOTE_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
@@ -40,7 +50,7 @@ public class LoadAllNotesActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mNoteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        mNoteViewModel = ViewModelProviders.of(this).get(AllNotesViewModel.class);
         mNoteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(@Nullable List<Note> notes) {

@@ -9,14 +9,14 @@ import java.util.Calendar;
 
 /**
  * This class represents a basic representation of a Note with
- * some common set of fields.
+ * some common set of fields used for serialization.
  *
  * @since 8/28/2018
  * @author lzemskov
  */
 
 @Entity
-public class Note implements Serializable {
+public class  Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int uid;
 
