@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -15,6 +15,9 @@ import java.util.List;
 public interface NoteDao {
     @Query("SELECT * FROM note")
     LiveData<List<Note>> getAllNotes();
+
+    @Query("SELECT * FROM note WHERE uid = :id")
+    Note load(String id);
 
     @Insert
     void insert(Note note);

@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.database;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -19,7 +19,7 @@ public abstract class AppDatabse extends RoomDatabase {
 
     private static AppDatabse INSTANCE;
 
-    static AppDatabse getDatabase(final Context context) {
+    public static AppDatabse getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabse.class) {
                 if (INSTANCE == null) {

@@ -1,8 +1,11 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.ui;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+
+import com.example.myfirstapp.database.Note;
+import com.example.myfirstapp.execution.AppRepository;
 
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class AllNotesViewModel extends AndroidViewModel {
         mAllNotes = mAppRepository.getAllNotes();
     }
 
-    LiveData<List<Note>> getAllNotes() {
+    public LiveData<List<Note>> getAllNotes() {
         return mAllNotes;
     }
 

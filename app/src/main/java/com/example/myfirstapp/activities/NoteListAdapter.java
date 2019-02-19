@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,24 +9,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.myfirstapp.database.Note;
+
 import java.util.List;
 
 /**
  * This class provides binding between an app specific dataset to a given view displayed inside the RecyclerView.
  */
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> {
-    class NoteViewHolder extends RecyclerView.ViewHolder {
+    //adding click-ability to items inside the list which uses this adapter
+    private static ClickListener clickListener;
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
+        void onItemLongClick(int position, View v);
+    }
+
+    public class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private final TextView noteItemView;
+
         private NoteViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             noteItemView = itemView.findViewById(R.id.textView);
         }
+
+        @Override public void onClick(View v) {
+            clickListener.onItemClick(getAdapterPosition(), v);
+        }
+
+        @Override public boolean onLongClick(View v) {
+            clickListener.onItemLongClick(getAdapterPosition(), v);
+            return true;
+        }
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        NoteListAdapter.clickListener = clickListener;
     }
 
     private final LayoutInflater mInflater;
     private List<Note> mNotes; //cached copy of notes
 
-    NoteListAdapter(Context context) {
+    public NoteListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
 
@@ -49,7 +75,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         }
     }
 
-    void setNotes(List<Note> notes) {
+    public void setNotes(List<Note> notes) {
         mNotes = notes;
         notifyDataSetChanged();
     }
@@ -61,5 +87,9 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         } else {
             return 0;
         }
+    }
+
+    public int getNoteIdAtPosition(int position) {
+        return mNotes.get(position).getUid();
     }
 }

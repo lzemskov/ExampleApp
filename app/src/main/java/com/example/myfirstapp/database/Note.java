@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -70,5 +70,20 @@ public class  Note implements Serializable {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String toStringJson() {
+        StringBuilder note = new StringBuilder("{");
+        note.append("\"uid\": ");
+        note.append(this.getUid());
+        note.append(",");
+        note.append("\"subject\": \"");
+        note.append(this.getSubject());
+        note.append("\", ");
+        note.append("\"details\" : \"");
+        note.append(this.getDetails());
+        note.append("\"");
+        note.append("}");
+        return note.toString();
     }
 }
