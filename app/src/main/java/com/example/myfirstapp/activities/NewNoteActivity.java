@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.myfirstapp.database.Note;
+import com.example.myfirstapp.repositories.Note;
 
 /**
  * Activity called when we try creating a New Note.

@@ -1,26 +1,23 @@
-package com.example.myfirstapp.execution;
+package com.example.myfirstapp.repositories;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
-import com.example.myfirstapp.database.Note;
-import com.example.myfirstapp.database.AppDatabse;
-import com.example.myfirstapp.database.NoteDao;
-
 import java.util.List;
 
 import javax.inject.Singleton;
 
-import static com.example.myfirstapp.database.AppDatabse.*;
+import static com.example.myfirstapp.repositories.AppDatabse.*;
 
 /**
  * Connects application context with the database.
  * Kicks off asynchronous insert request using AsyncTask instance.
- */
+ **/
+@Singleton
 public class AppRepository {
-    private NoteDao mNoteDao;
-    private LiveData<List<Note>> mAllNotes;
+    private final NoteDao mNoteDao;
+    private final LiveData<List<Note>> mAllNotes;
 
     public AppRepository(Application application) {
         AppDatabse db = getDatabase(application);

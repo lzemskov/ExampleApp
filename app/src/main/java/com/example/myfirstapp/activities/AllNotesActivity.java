@@ -14,8 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.myfirstapp.ui.AllNotesViewModel;
-import com.example.myfirstapp.database.Note;
+import com.example.myfirstapp.viewmodels.NoteListAdapter;
+import com.example.myfirstapp.viewmodels.AllNotesViewModel;
+import com.example.myfirstapp.repositories.Note;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  * Loads ReciclerView and populates it with data with help from Adapter.
  * Provides on activity callback to handle activity on this view.
  */
-public class LoadAllNotesActivity extends AppCompatActivity {
+public class AllNotesActivity extends AppCompatActivity {
     private AllNotesViewModel mNoteViewModel;
     public static final int NEW_NOTE_ACTIVITY_REQUEST_CODE = 1;
     public static final int VIEW_NOTE_ACTIVITY_REQUEST_CODE = 2;
@@ -46,7 +47,7 @@ public class LoadAllNotesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoadAllNotesActivity.this, NewNoteActivity.class);
+                Intent intent = new Intent(AllNotesActivity.this, NewNoteActivity.class);
                 startActivityForResult(intent, NEW_NOTE_ACTIVITY_REQUEST_CODE);
             }
         });
@@ -56,7 +57,7 @@ public class LoadAllNotesActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new NoteListAdapter.ClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Intent intent = new Intent(LoadAllNotesActivity.this, NoteDetailActivity.class);
+                Intent intent = new Intent(AllNotesActivity.this, NoteDetailActivity.class);
                 String noteId = Integer.toString(adapter.getNoteIdAtPosition(position));
                 intent.putExtra(ID_KEY,  noteId);
                 Log.d("DEBUG", "onItemClick position: " + position + " noteId: " + noteId);

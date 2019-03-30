@@ -1,11 +1,10 @@
-package com.example.myfirstapp.database;
+package com.example.myfirstapp.repositories;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 /**
  * This class represents a basic representation of a Note with

@@ -2,6 +2,8 @@ package com.example.myfirstapp;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import android.support.
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,6 +18,6 @@ import org.junit.runner.RunWith;
 public class ActivitiesTests {
     @Test
     public void testEvent() {
-        //val scenario = launchActivity<LoadAllNotesActivity>();
+        //val scenario = launchActivity<AllNotesActivity>();
     }
 }

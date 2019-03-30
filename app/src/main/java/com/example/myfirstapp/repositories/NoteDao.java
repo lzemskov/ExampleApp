@@ -1,4 +1,4 @@
-package com.example.myfirstapp.database;
+package com.example.myfirstapp.repositories;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

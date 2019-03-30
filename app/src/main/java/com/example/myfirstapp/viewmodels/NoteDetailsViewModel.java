@@ -1,25 +1,21 @@
-package com.example.myfirstapp.ui;
+package com.example.myfirstapp.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
 
-import com.example.myfirstapp.database.Note;
-import com.example.myfirstapp.execution.AppRepository;
+import com.example.myfirstapp.repositories.Note;
+import com.example.myfirstapp.repositories.AppRepository;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * This class represents the model for a Note
  */
-public class NoteViewModel extends AndroidViewModel {
+public class NoteDetailsViewModel extends AndroidViewModel {
     private AppRepository mAppRepository;
     private Note note;
 
-    public NoteViewModel(Application application) {
+    public NoteDetailsViewModel(Application application) {
         super(application);
         mAppRepository = new AppRepository(application);
     }

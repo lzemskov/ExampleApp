@@ -1,4 +1,4 @@
-package com.example.myfirstapp.activities;
+package com.example.myfirstapp.viewmodels;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.myfirstapp.database.Note;
+import com.example.myfirstapp.activities.R;
+import com.example.myfirstapp.repositories.Note;
 
 import java.util.List;
 

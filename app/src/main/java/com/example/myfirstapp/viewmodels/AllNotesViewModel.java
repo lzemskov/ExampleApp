@@ -1,13 +1,15 @@
-package com.example.myfirstapp.ui;
+package com.example.myfirstapp.viewmodels;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
-import com.example.myfirstapp.database.Note;
-import com.example.myfirstapp.execution.AppRepository;
+import com.example.myfirstapp.repositories.Note;
+import com.example.myfirstapp.repositories.AppRepository;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * This class builds view to be consumed by the UI.
@@ -15,9 +17,11 @@ import java.util.List;
  * Delegates to Repository to Inserts new Note info the DB.
  */
 public class AllNotesViewModel extends AndroidViewModel {
+    //TODO: Need to figure out how to use Dagger2 library to inject repository view.
     private AppRepository mAppRepository;
     private LiveData<List<Note>> mAllNotes;
 
+    @Inject
     public AllNotesViewModel(Application application) {
         super(application);
         mAppRepository = new AppRepository(application);
