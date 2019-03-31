@@ -21,11 +21,13 @@ public class AllNotesViewModel extends AndroidViewModel {
     private AppRepository mAppRepository;
     private LiveData<List<Note>> mAllNotes;
 
-    @Inject
     public AllNotesViewModel(Application application) {
         super(application);
         mAppRepository = new AppRepository(application);
         mAllNotes = mAppRepository.getAllNotes();
+        if (mAllNotes.getValue() != null) {
+            android.util.Log.d("DEBUG", "AllNotesViewModel.AllNotesViewModel() note size: " + mAllNotes.getValue().size());
+        }
     }
 
     public LiveData<List<Note>> getAllNotes() {

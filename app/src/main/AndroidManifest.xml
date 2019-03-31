@@ -9,18 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".NewNoteActivity" />
+
         <activity
             android:name=".AllNotesActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewNoteActivity" />
-        <activity android:name=".NoteDetailActivity" />
+
+        <activity
+            android:name=".NoteDetailActivity"
+            android:label="Note Detail"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
 
         <!-- adding for testing -->
         <uses-library android:name="android.test.runner" android:required="false" />
