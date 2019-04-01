@@ -12,9 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * This class builds view to be consumed by the UI.
- * Delegates to Repository to Gets all Notes from the DB.
- * Delegates to Repository to Inserts new Note info the DB.
+ * This class represents a ViewModel associated with {@link com.example.myfirstapp.activities.AllNotesActivity}
  */
 public class AllNotesViewModel extends AndroidViewModel {
     //TODO: Need to figure out how to use Dagger2 library to inject repository view.
@@ -23,11 +21,8 @@ public class AllNotesViewModel extends AndroidViewModel {
 
     public AllNotesViewModel(Application application) {
         super(application);
-        mAppRepository = new AppRepository(application);
+        mAppRepository = AppRepository.getRepository(application);
         mAllNotes = mAppRepository.getAllNotes();
-        if (mAllNotes.getValue() != null) {
-            android.util.Log.d("DEBUG", "AllNotesViewModel.AllNotesViewModel() note size: " + mAllNotes.getValue().size());
-        }
     }
 
     public LiveData<List<Note>> getAllNotes() {

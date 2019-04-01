@@ -5,6 +5,8 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.myfirstapp.Utils;
+
 import java.util.List;
 
 import javax.inject.Singleton;
@@ -17,22 +19,27 @@ import static com.example.myfirstapp.repositories.AppDatabse.*;
  **/
 @Singleton
 public class AppRepository {
-    static int count = 0;
     private final NoteDao mNoteDao;
     private final LiveData<List<Note>> mAllNotes;
+    private static AppRepository INSTANCE;
 
-    public AppRepository(Application application) {
+    public static AppRepository getRepository(Application application) {
+        if (INSTANCE == null ) {
+            synchronized (AppRepository.class) {
+                if (INSTANCE == null) {
+                    // Create database here
+                    INSTANCE = new AppRepository(application);
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
+    private AppRepository(Application application) {
         AppDatabse db = getDatabase(application);
         mNoteDao = db.noteDao();
         mAllNotes = mNoteDao.getAllNotes();
-        count++;
-        if(mAllNotes.getValue() != null) {
-            List<Note> notes = mAllNotes.getValue();
-            for(Note n: notes) {
-                Log.d("DEBUG", "Note: " + n.getSubject() + " uid" + n.getUid());
-            }
-        }
-        assert(mAllNotes.getValue() != null);
+        Utils.printNotesList(mAllNotes);
     }
 
     public LiveData<List<Note>> getAllNotes() {

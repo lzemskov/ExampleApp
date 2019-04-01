@@ -90,7 +90,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
         }
     }
 
-    public int getNoteIdAtPosition(int position) {
+    public int getNoteUidAtPosition(int position) {
         return mNotes.get(position).getUid();
     }
 }

@@ -10,15 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.myfirstapp.Constants;
 import com.example.myfirstapp.viewmodels.NoteListAdapter;
 import com.example.myfirstapp.viewmodels.AllNotesViewModel;
 import com.example.myfirstapp.repositories.Note;
 
 import java.util.List;
+
+import static com.example.myfirstapp.Constants.NEW_NOTE_ACTIVITY_REQUEST_CODE;
+import static com.example.myfirstapp.Constants.VIEW_NOTE_ACTIVITY_REQUEST_CODE;
+import static com.example.myfirstapp.Constants.ID_KEY;
 
 /**
  * This Activity is currently the first screen in the application.
@@ -32,9 +36,6 @@ import java.util.List;
  */
 public class AllNotesActivity extends AppCompatActivity {
     private AllNotesViewModel mNoteViewModel;
-    public static final int NEW_NOTE_ACTIVITY_REQUEST_CODE = 1;
-    public static final int VIEW_NOTE_ACTIVITY_REQUEST_CODE = 2;
-    public static final String ID_KEY = "ID_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +59,13 @@ public class AllNotesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Intent intent = new Intent(AllNotesActivity.this, NoteDetailActivity.class);
-                String noteId = Integer.toString(adapter.getNoteIdAtPosition(position));
-                intent.putExtra(ID_KEY,  noteId);
-                Log.d("DEBUG", "onItemClick position: " + position + " noteId: " + noteId);
+                intent.putExtra(Constants.ID_KEY,  adapter.getNoteUidAtPosition(position));
                 startActivityForResult(intent, VIEW_NOTE_ACTIVITY_REQUEST_CODE);
             }
 
             @Override
             public void onItemLongClick(int position, View v) {
-                Log.d("DEBUG", "onItemLongClick position: " + position);
+                //TODO: provide implementation
             }
         });
 
@@ -76,7 +75,7 @@ public class AllNotesActivity extends AppCompatActivity {
         mNoteViewModel = ViewModelProviders.of(this).get(AllNotesViewModel.class);
         mNoteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
-            public void onChanged(@Nullable List<Note> notes) {
+            public void onChanged(@Nullable List<Note>notes) {
                 // Update the cached copy of the notes in the adapter.
                 adapter.setNotes(notes);
             }
