@@ -35,7 +35,6 @@ public abstract class AppDatabse extends RoomDatabase {
     }
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
-
         @Override
         public void onOpen(@android.support.annotation.NonNull @NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);

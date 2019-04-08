@@ -16,6 +16,7 @@ import static com.example.myfirstapp.repositories.AppDatabse.*;
 /**
  * Connects application context with the database.
  * Kicks off asynchronous insert request using AsyncTask instance.
+ * Instatiates databse.
  **/
 @Singleton
 public class AppRepository {

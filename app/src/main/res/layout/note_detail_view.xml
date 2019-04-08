@@ -5,7 +5,9 @@
         <variable name="note" type="com.example.myfirstapp.repositories.Note"/>
     </data>
 
-    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <TextView
         android:text="@{note.subject}"
         android:id="@+id/subject"
