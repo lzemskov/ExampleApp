@@ -8,12 +8,11 @@
     <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <TextView
         android:text="@{note.subject}"
         android:id="@+id/subject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/note_title"
         android:inputType="textMultiLine"
         android:hint="@string/subject"
         android:textColor="@color/black"/>
@@ -21,9 +20,7 @@
     <TextView
         android:text="@{note.details}"
         android:id="@+id/details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/note_title"
         android:inputType="textMultiLine"
         android:hint="@string/details"
         android:textColor="@color/black"/>

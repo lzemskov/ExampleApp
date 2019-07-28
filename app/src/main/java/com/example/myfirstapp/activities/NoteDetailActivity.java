@@ -20,6 +20,7 @@ public class NoteDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.note_detail_view);
         newNoteViewModel = ViewModelProviders.of(this).get(NoteDetailViewModel.class);
         newNoteViewModel.init(this.getIntent().getIntExtra(ID_KEY, -1));
         NoteDetailViewBinding binding = DataBindingUtil.setContentView(this, R.layout.note_detail_view);
